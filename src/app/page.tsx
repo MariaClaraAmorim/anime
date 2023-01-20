@@ -1,91 +1,87 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import { Inter } from "@next/font/google";
+import { Header } from "components/Header";
+import Image from "next/image";
+import Link from "next/link";
+import css from "./styles.module.css";
+const inter = Inter({ subsets: ["latin"] });
 
-const inter = Inter({ subsets: ['latin'] })
+export default async function Home() {
+  const result = await getTopAnimes();
 
-export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <main>
+      <Header />
+      <div className={css.button}>
+        <Link href={"/top-anime"}>
+          <button className={css.btnTopAnime}>Ver top anime</button>
+        </Link>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={css.container}>
+        {result.map((anime) => (
+          <div key={anime.id}>
+            <div className={css.box}>
+              <Link href={`/anime/${anime.id}/`}>
+                <Image
+                  className={css.imgAnime}
+                  src={anime.images.large}
+                  alt={anime.title}
+                  width={350}
+                  height={200}
+                />
+              </Link>
+              <p className={css.title}>
+                {anime.title} - {anime.japaneseTitle}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </main>
-  )
+  );
+}
+
+interface AnimeResponseDTO {
+  mal_id: number;
+  title: string;
+  title_japanese: string;
+  images: {
+    webp: {
+      image_url: string;
+      large_image_url: string;
+    };
+  };
+  episodes: number;
+}
+
+interface Anime {
+  id: number;
+  title: string;
+  japaneseTitle: string;
+  images: {
+    large: string;
+    tiny: string;
+  };
+  episodes: number;
+}
+
+const API_URL = process.env.NEXT_PUBLIC_API;
+
+async function getTopAnimes(): Promise<Anime[]> {
+  const response = await fetch(`${API_URL}/anime`);
+
+  const json = await response.json();
+
+  const result = json as { data: AnimeResponseDTO[] };
+
+  return result.data.map((anime) => ({
+    id: anime.mal_id,
+    title: anime.title,
+    japaneseTitle: anime.title_japanese,
+    images: {
+      large: anime.images.webp.large_image_url,
+      tiny: anime.images.webp.image_url,
+    },
+    episodes: anime.episodes,
+  }));
 }
