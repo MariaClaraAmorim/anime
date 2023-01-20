@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 3rem 0rem 0r;
+}
+.title {
+  color: #fff;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0rem 0rem 0;
+}
+
+.imgAnimeGerado {
+  border: 5px solid #fff;
+}
+
+.gerador {
+  display: flex;
+  justify-content: center;
+}
+.btnGerador {
+  background-color: #d54444;
+  border: 1px solid;
+  border-radius: 0.4rem;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.6rem;
+  height: fit-content;
+}

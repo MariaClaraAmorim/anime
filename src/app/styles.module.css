@@ -1,0 +1,54 @@
+.button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.6rem;
+}
+.btnTopAnime {
+  background-color: #d54444;
+  border: 1px solid;
+  border-radius: 0.4rem;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.6rem;
+  height: fit-content;
+}
+
+.container {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1220px) {
+  .container {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    grid-template-columns: repeat(1, auto);
+  }
+}
+
+.imgAnime {
+  height: 100%;
+  border: 5px solid white;
+}
+
+@media screen and (max-width: 400px) {
+  .imgAnime {
+    width: 90%;
+  }
+}
+.box {
+  text-align: center;
+  padding: 1rem;
+}
+
+.title {
+  color: #fff;
+}
