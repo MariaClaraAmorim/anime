@@ -4,22 +4,23 @@ import { getAnimes } from "@services/anime";
 import Image from "next/image";
 import Link from "next/link";
 import css from "./styles.module.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
-export default async function Home() {
-  const result = await getAnimes();
+export default async function TopAnime() {
+  const animes = await getAnimes(true);
 
   return (
     <main>
-      {/* <Header /> */}
+      <Header />
       <div className={css.button}>
-        <Link href={"/top-anime"}>
-          <button className={css.btnTopAnime}>Ver top anime</button>
+        <Link href={"/"}>
+          <button className={css.btnTopAnime}>Ver todos</button>
         </Link>
       </div>
 
       <div className={css.container}>
-        {result.map((anime) => (
+        {animes.map((anime) => (
           <div key={anime.id}>
             <div className={css.box}>
               <Link href={`/anime/${anime.id}/`}>

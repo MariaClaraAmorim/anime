@@ -1,9 +1,5 @@
-import TopAnime from "components/TopAnime";
+import TopAnime from "@components/TopAnime";
 
 export default async function topAnimePage() {
-  return (
-    <>
-      <TopAnime />
-    </>
-  );
+  return <TopAnime />;
 }

@@ -1,0 +1,58 @@
+.container {
+}
+
+.box {
+  display: flex;
+  gap: 1rem;
+}
+@media screen and (max-width: 750px) {
+  .box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.title {
+  color: #fff;
+}
+
+.description {
+  color: #fff;
+}
+
+.informations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.itemsDescriptions{
+  color: white;
+}
+
+.liDescriptions{
+  list-style: none;
+
+}
+
+.imgAnime {
+  /* height: 100%;
+  width: 100%; */
+  border: 5px solid white;
+}
+/* 
+@media screen and (max-width: 400px) {
+  .imgAnime {
+  height: 100%;
+  width: 90%;
+  }
+} */
+.box {
+  text-align: center;
+  padding: 1rem;
+}
+
+.title {
+  color: #fff;
+}
