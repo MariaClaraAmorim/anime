@@ -13,6 +13,12 @@ export interface AnimeResponseDTO {
   favorites?: number;
   year?: number;
   synopsis?: string;
+  title_synonyms?: string[];
+  trailer?: {
+    youtube_id: string;
+    url: string;
+    embed_url: string;
+  };
 }
 
 export interface Anime {
@@ -28,4 +34,10 @@ export interface Anime {
   favorites?: number;
   year?: number;
   synopsis?: string;
+
+  trailer?: {
+    youtube_id: string;
+    url: string;
+    embed_url: string;
+  };
 }

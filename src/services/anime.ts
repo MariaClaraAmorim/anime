@@ -39,6 +39,11 @@ function animeDefault(anime: AnimeResponseDTO): Anime {
     },
     episodes: anime.episodes,
     synopsis: anime.synopsis,
+    trailer: {
+      youtube_id: anime.trailer?.youtube_id ?? "",
+      url: anime.trailer?.url ?? "",
+      embed_url: anime.trailer?.embed_url ?? "",
+    },
   };
 }
 
