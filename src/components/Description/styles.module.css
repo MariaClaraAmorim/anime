@@ -1,40 +1,3 @@
-.box {
-  display: flex;
-  gap: 1rem;
-}
-@media screen and (max-width: 750px) {
-  .box {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-.informations {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.itemsDescriptions {
-  color: var(--secondary);
-}
-
-.liDescriptions {
-  list-style: none;
-}
-
-.imgAnime {
-  /* border: 5px solid white; */
-  border: 5px solid var(--secondary);
-}
-
-.box {
-  text-align: center;
-  padding: 1rem;
-}
-
 .title {
   font-weight: 900;
   font-size: 1.4rem;
@@ -76,11 +39,12 @@
   gap: 1rem;
 }
 
-.items span {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+.liDescriptions {
+  list-style: none;
+}
+
+.imgAnime {
+  border: 5px solid var(--secondary);
 }
 
 .synopsis {
@@ -89,12 +53,4 @@
 
 .medias {
   display: flex;
-  /* align-items: center;
-  padding-left: 5rem;
-  gap: 2rem; */
 }
-/* @media screen and (max-width: 850px) {
-  .medias {
-    flex-direction: column;
-  }
-} */
