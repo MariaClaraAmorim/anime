@@ -19,7 +19,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    background-color: black;
+    background-color: var(--primary);
 }
 
 a {
@@ -31,4 +31,10 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+:root {
+  --primary: #000;
+  --secondary: #fff;
+  --red: #d54444;
 }

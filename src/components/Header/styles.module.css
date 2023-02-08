@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background: #d54444;
+  background: var(--red);
   width: 100%;
   height: 5rem;
 }
@@ -22,7 +22,7 @@
 
 .bsSearch {
   position: absolute;
-  background: white;
+  background: var(--secondary);
   border: 0;
   margin: 0.4rem;
 }
