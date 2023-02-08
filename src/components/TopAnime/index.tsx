@@ -12,7 +12,7 @@ export default async function TopAnime() {
 
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <div className={css.button}>
         <Link href={"/"}>
           <button className={css.btnTopAnime}>Ver todos</button>
