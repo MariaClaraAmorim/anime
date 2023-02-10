@@ -1,14 +1,27 @@
-import { Header } from "@components/Header";
+"use client"
+import { Anime } from "@dto/anime";
 import { Inter } from "@next/font/google";
 import { getAnimes } from "@services/anime";
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 import css from "./styles.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default async function TopAnime() {
-  const animes = await getAnimes(true);
+export default function TopAnime() {
+  const [animes, setAnimes] = useState<Anime[]>([]);
+
+  const getAnimeInformation = useCallback(async () => {
+    const response = await getAnimes();
+
+    setAnimes(response);
+  }, []);
+
+  useEffect(() => {
+    getAnimeInformation();
+  }, [getAnimeInformation]);
+
 
   return (
     <main>

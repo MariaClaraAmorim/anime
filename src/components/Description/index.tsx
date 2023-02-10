@@ -1,13 +1,26 @@
+"use client";
+import { Anime } from "@dto/anime";
 import { getAnime } from "@services/anime";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import css from "./styles.module.css";
 
 interface Props {
   idAnime: string;
 }
 
-async function Description({ idAnime }: Props) {
-  const anime = await getAnime(idAnime);
+function Description({ idAnime }: Props) {
+  const [anime, setAnime] = useState<Anime>();
+
+  const getAnimeInformation = useCallback(async () => {
+    const response = await getAnime(idAnime);
+
+    setAnime(response);
+  }, [idAnime]);
+
+  useEffect(() => {
+    getAnimeInformation();
+  }, [getAnimeInformation]);
 
   return (
     <>
